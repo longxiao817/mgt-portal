@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="realm" ref="jdbcRealm" />
+		<property name="rememberMeManager" ref="rememberMeManager" />
+	</bean>
+
+	<!-- Ⅳ. 配置 LifecycleBeanPostProcessor: 可以自动的调用 Spring 中配置的 shiro bean 的 -->
+	<!-- init-method 和 destroy-method -->
+
+	<!-- 配置 LifecycleBeanPostProcessor: 可以自动的调用 Spring 中配置的 shiro bean 的 init-method 
+		和 destroy-method -->
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- 配置缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<!-- Set a net.sf.ehcache.CacheManager instance here if you already have 
+			one. If not, a new one will be creaed with a default config: <property name="cacheManager" 
+			ref="ehCacheManager"/> -->
+		<!-- If you don't have a pre-built net.sf.ehcache.CacheManager instance 
+			to inject, but you want a specific Ehcache configuration to be used, specify 
+			that here. If you don't, a default will be used.: -->
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	</bean>
+
+
+	<bean id="jdbcRealm" class="com.atguigu.mgt.portal.bean.LoginShiroRealm">
+		<!-- <property name="name" value="jdbcRealm"/> <property name="dataSource" 
+			ref="dataSource"/> <property name="credentialsMatcher"> The 'bootstrapDataPopulator' 
+			Sha256 hashes the password (using the username as the salt) then base64 encodes 
+			it: <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher"> 
+			<property name="hashAlgorithmName" value="SHA-256"/> true means hex encoded, 
+			false means base64 encoded <property name="storedCredentialsHexEncoded" value="false"/> 
+			</bean> </property> -->
+	</bean>
+
+
+
+	<!-- Ⅴ. 启用 Spring 中配置的 bean 中的 Shiro 注解. 只有在配置了 LifecycleBeanPostProcessor -->
+	<!-- 后才真正的起作用 -->
+
+	<!-- 启用 Spring 中配置的 bean 中的 Shiro 注解. 只有在配置了 LifecycleBeanPostProcessor 
+		后才真正的起作用 -->
+
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+
+	<!-- remenberMe配置 -->
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="rememberMe" />
+		<property name="httpOnly" value="true" />
+		<!-- 默认记住7天（单位：秒） -->
+		<property name="maxAge" value="604800" />
+	</bean>
+	<!-- rememberMe管理器 -->
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}" />
+		<property name="cookie" ref="rememberMeCookie" />
+	</bean>
+
+
+
+
+
+	<!-- 配置 ShiroFilter. 注意: 该 ShiroFilte 的 id 必须和 web.xml 文件中配置的 shiro-filter 
+		的 filter-name 一致. -->
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp" />
+		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
+
+		<!-- 配置受保护的资源和访问这些资源需要具备的权限 1. anon: 可以匿名访问. 即不需要登录, 也不需要权限就可以访问. 2. authc: 
+			必须登陆后才可以访问. 注意: URL 权限采取第一次匹配优先的方式 -->
+
+		<property name="filterChainDefinitions">
+			<value>
+				/users/exam.html = user
+				/users/getUserGames = user
+				/users/personnelcenter = user
+				/users/profile.html = user
+				/users/** = anon
+				/auth/* = user
+				
+				/** = anon
+			</value>
+		</property>
+	</bean>
+</beans>

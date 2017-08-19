@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<section class="auth-main">
+				<div class="auth-main-body login">
+					<h1 class="auth-main-title">保密邮箱验证</h1>
+					<div class="main-body-header">
+						<p>
+							<span>即刻加入游戏狂热者行列</span>
+						</p>
+					</div>
+					<div class="main-body-login">
+						<div class="phone-register">
+							<form class="phone-captcha-form" role="form"
+								action="https://www.taptap.com/auth/login" method="post">
+								<input name="_token" type="hidden"
+									value="Xy31QxSBqBNuoWCfOMjieB34lOn7zyxb4XBN9N7I">
+								<p>认证完成,工作人员会尽快帮助您完成审核,请耐心等待O!</p>
+								<button disabled=""
+									class="get-phone-captcha btn btn-primary btn-block"
+									type="button" tap-action="login">
+									<a href="${ctp }/users.personnelcenter.html">返回主页</a>
+								</button>
+							</form>
+						</div>
+						<div class="third-account-wrapper">
+							<div class="third-account-wrapper-item">
+								<a class="weixinweb"
+									href="https://www.taptap.com/social/weixinweb/connect">
+									<div class="icon icon-weixinweb"></div> <span>微信</span>
+								</a>
+							</div>
+							<div class="third-account-wrapper-item">
+								<a class="qq" href="https://www.taptap.com/social/qq/connect">
+									<div class="icon icon-qq"></div> <span>QQ</span>
+								</a>
+							</div>
+							<div class="third-account-wrapper-item">
+								<a class="facebook"
+									href="https://www.taptap.com/social/facebook/connect">
+									<div class="icon icon-facebook"></div> <span>Facebook</span>
+								</a>
+							</div>
+							<div class="third-account-wrapper-item">
+								<a href="https://www.taptap.com/auth/email/login">
+									<div class="icon icon-email"></div> <span>邮箱帐号</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
