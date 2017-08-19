@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="www.baidu.com">ssa</a>
+	<a href="${ctp }/upload/toUpload">去上传游戏</a>
+	
 </body>
 </html>

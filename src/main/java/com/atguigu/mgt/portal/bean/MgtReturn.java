@@ -3,7 +3,7 @@ package com.atguigu.mgt.portal.bean;
 import java.util.Map;
 
 
-public class ScwReturn<T> {
+public class MgtReturn<T> {
 
     private int code;
     
@@ -43,8 +43,8 @@ public class ScwReturn<T> {
         this.ext = ext;
     }
    
-    public static <T> ScwReturn<T> success(String msg,T content,Map<String,Object> ext){
-        ScwReturn<T> t = new ScwReturn<>();
+    public static <T> MgtReturn<T> success(String msg,T content,Map<String,Object> ext){
+        MgtReturn<T> t = new MgtReturn<>();
         t.setCode(1);
         t.setMsg(msg);
         t.setContent(content);
@@ -53,8 +53,8 @@ public class ScwReturn<T> {
         return t;
     }
     
-    public static <T> ScwReturn<T> fail(String msg,T content,Map<String,Object> ext){
-        ScwReturn<T> t = new ScwReturn<>();
+    public static <T> MgtReturn<T> fail(String msg,T content,Map<String,Object> ext){
+        MgtReturn<T> t = new MgtReturn<>();
         t.setCode(0);
         t.setMsg(msg);
         t.setContent(content);
