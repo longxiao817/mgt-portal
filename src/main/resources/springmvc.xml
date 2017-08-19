@@ -10,13 +10,15 @@
 	<context:component-scan base-package="com.atguigu.mgt.portal.controller" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	
+	<context:property-placeholder location="classpath:other/app.properties"/>
 	<!--2、视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsps/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
+	
+
 	<!-- 映射动态资源，并开启开挂模式 -->
 	<mvc:annotation-driven/>
 	<!-- 映射静态资源，将静态资源交给tomcat -->
