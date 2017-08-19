@@ -59,20 +59,14 @@
 				</ul>
 					</span>
 					
-				<%-- 	<c:if test="${flag==1 }">
-					<c:forEach items="${comentar }" var="com">
+				
 						<div class="coms">
-							<div>游戏评论：${com.comentar.usercomentar }</div>
-							<c:forEach items="${com.reply }" var="re">
-							
-								<div>游戏大小 ：${re.content }</div>
-							</c:forEach>
-							
+							<div class='coms'><div>游戏详细介绍：${game.introduce }</div>
+							<div>游戏大小 ：${game.size }</div>
+							<div class='imgUrls'>游戏画面：</div>
 						</div>
 					
-					</c:forEach>
-						
-					</c:if> --%>
+				
 				</div>
 			</div>
 
@@ -91,26 +85,22 @@
 			
 			var imgsUrl="${game.imgurls}";
 			var imgstr = imgsUrl.split(",", 100);
-			var img="<div class='imgUrls'>游戏画面：</div>";
+			
 			$.each(imgstr,function(){
 				
-				img.append("<img width=auto height=150  src='${ctp}"+this+"'>");
+				$(".imgUrls").append("<img width=auto height=150  src='${ctp}"+this+"'>");
 			})
-			$(".container").append(
-					"<div class='coms'><div>游戏详细介绍：${game.introduce }</div>"
-					+"<div>游戏大小 ：${game.size }</div>"
-						
-			).append(img);
-			
+
 		}
-		$("li[role='gamelist']").click(function(){
+		$(".content").on("click","li[role='gamelist']",function(){
 			$(this).addClass("active").siblings("li[role='gamelist']")
 			.removeClass("active");
-			var flag = $(this).attr("flag");
+		/* 	var flag = $(this).attr("flag");
 			var href=this.find("a").prop("href");
 					$.post(href,function(data){
 						showdetails();
 					}
+					return false; */
 		})
 		
 		

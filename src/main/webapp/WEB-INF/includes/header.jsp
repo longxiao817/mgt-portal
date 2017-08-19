@@ -40,9 +40,9 @@
 						</span>
 
 						<ul>
-							<li role="presentation"  class="active"><a class="color1" href="${ctp}/game/firstpage.html">首页</a></li>
-							<li role="presentation" ><a class="color2" href="${ctp}/game/rankinglist.html">排行榜</a></li>
-							<li role="presentation" ><a class="color3" href="${ctp}/game/reviews.html">安利墙</a></li>
+							<li role="presentation"  class="active"><a class="color1" href1="${ctp}/index.jsp" href="${ctp}/game/firstpage.html">首页</a></li>
+							<li role="presentation" ><a class="color2" href1="${ctp}/index.jsp" href="${ctp}/game/rankinglist.html">排行榜</a></li>
+							<li ><a class="color3" href="${ctp }/comentar/list"">安利墙</a></li>
 							<li role="presentation" ><a class="color4" href="404.html">发现</a></li>
 							<li role="presentation" ><a class="color5" href="blog.html">论坛</a></li>
 							<li role="presentation" ><a class="color6" href="contact.html">Contact</a></li>
