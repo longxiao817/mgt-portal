@@ -28,8 +28,6 @@ import com.atguigu.mgt.manager.bean.TType;
 import com.atguigu.mgt.manager.bean.TUsers;
 import com.atguigu.mgt.portal.bean.ScwReturn;
 import com.atguigu.mgt.portal.service.GameService;
-import com.atguigu.mgt.portal.service.UserFansService;
-import com.atguigu.mgt.portal.service.UserFocusService;
 import com.atguigu.mgt.portal.service.UserService;
 import com.atguigu.project.HttpClientUtil;
 import com.atguigu.project.MD5Util;
@@ -43,12 +41,6 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-
-	@Autowired
-	UserFansService userFansService;
-
-	@Autowired
-	UserFocusService userFocusService;
 
 	@Autowired
 	GameService gameService;
