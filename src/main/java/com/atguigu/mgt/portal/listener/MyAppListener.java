@@ -16,6 +16,8 @@ public class MyAppListener implements ServletContextListener{
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+    	
+    	System.out.println("starting servlet context ... ... ");
         ServletContext servletContext = sce.getServletContext();        
         //1、将项目路径放在application域中
         servletContext.setAttribute("ctp", servletContext.getContextPath());
