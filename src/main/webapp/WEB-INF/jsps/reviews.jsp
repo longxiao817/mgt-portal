@@ -149,7 +149,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		    var bScrollH = document.body.scrollHeight; // 滚动条总高度        
 		    if (wScrollY + wInnerH >= bScrollH) {  
 	    		pn++;
-	    		alert(pn);
+	    		
 				$.ajax({
 					url : "${ctp}/comentar/json",
 					type : "get",
@@ -157,9 +157,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					success : function(result){
 						//展示评论卡片
 						
-						 if(pn <= result.pages){
+						 
 							 showComentarCard($(".card-columns"),result.list);
-						}
+						
 						
 					}
 					
@@ -174,7 +174,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					.append(
 						"<div class='card-block'>"
 							+ "<a href='#' class='card-link'> "
-							+ "<img class='card-img-top' src='"+this.game.imgurl+"' alt='' width='50' title='"+this.name+"'>"
+							+ "<img class='card-img-top' src='${ctp}/"+this.game.imgurl+"' alt='' width='50' title='"+this.name+"'>"
 							+ "</a>"
 							+ "<div>"
 							+ "<h4 class='card-title'>"

@@ -132,13 +132,14 @@ public class ReviewController {
     
     @ResponseBody
     @RequestMapping("/json")
-    public PageInfo<Map<String,Object>> Card(@RequestParam(value="pn",defaultValue="1")Integer pn){
+    public PageInfo<List<Map<String,Object>>> Card(@RequestParam(value="pn",defaultValue="1")Integer pn){
         System.out.println("pn=" + pn );
-        PageHelper.startPage(pn,6);
+        PageHelper.startPage(pn,10);
         
         
         List<Map<String,Object>> comentars =  comentarService.getComentars(); 
-        PageInfo<Map<String,Object>> info = new PageInfo<Map<String,Object>>(comentars);
+        PageInfo<List<Map<String,Object>>> info = new PageInfo(comentars);
+        System.out.println("-------------");
         System.out.println(info);
         //model.addAttribute("comentars_info",info);
             
