@@ -12,4 +12,7 @@ public interface GameService {
     public TGames getGame(Integer id);
 
     public List<TGames> selectGame(Integer id);
+
+	public List<TGames> getAllGamesByUserId(Integer userId);
+
 }

@@ -135,7 +135,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="pageContent">
 		<!-- 填充到此位置 -->
 	</div>
+<div>
+<h1>index page for login test</h1>
 
+<a href="${ctp }/shiro/success.jsp">success page</a>
+<a href="${ctp }/shiro/test.jsp">test page</a>
+<a href="${ctp }/users/personnelcenter">个人中心</a>
+
+
+<a href="${ctp }/auth/prodeploy">process deployment</a>
+<form action="${ctp }/auth/prodeploy" method="post">
+
+	<input type="file" value="文件上传"/>
+	<input type="submit" value="submit" />
+</form>
+</div>
 	<!-- 右侧小火箭图标返回顶部 -->
 
 	
@@ -145,6 +159,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 </body>
 </html>
-
 
 

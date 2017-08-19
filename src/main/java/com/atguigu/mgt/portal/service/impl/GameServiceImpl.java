@@ -1,6 +1,7 @@
 package com.atguigu.mgt.portal.service.impl;
 
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,16 @@ public class GameServiceImpl implements GameService{
     @Override
     public List<TGames> selectGame(Integer id) {
         return gamesMapper.selectGameByUserId(id);
+
     }
+	
+	
+	@Override
+	public List<TGames> getAllGamesByUserId(Integer userId) {
+		
+		return gamesMapper.getAllGamesByUserId(userId);
+		
+	}
+
 
 }
