@@ -53,6 +53,8 @@ public class MgtReturn<T> {
         return t;
     }
     
+    
+    
     public static <T> MgtReturn<T> fail(String msg,T content,Map<String,Object> ext){
         MgtReturn<T> t = new MgtReturn<>();
         t.setCode(0);
